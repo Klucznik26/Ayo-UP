@@ -1,0 +1,20 @@
+STRINGS = {
+    "app_title": "Ayo Up",
+    "open_image": "Ava pilt",
+    "select_output": "Vali salvestuskaust",
+    "run": "Käivita",
+    "exit": "Sulge",
+    "settings": "Seaded",
+    "settings_language": "Keel",
+    "save": "Salvesta",
+    "cancel": "Tühista",
+    "scale": "Skaala",
+    "no_model": "Mudel pole paigaldatud",
+    "tooltip_select_image": "Vali pilt",
+    "tooltip_select_output": "Vali salvestuskaust",
+    "theme": "Teema",
+    "theme_system": "Süsteemne",
+    "theme_light": "Hele",
+    "theme_dark": "Tume",
+}
+

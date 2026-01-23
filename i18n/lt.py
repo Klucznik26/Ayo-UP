@@ -1,0 +1,20 @@
+STRINGS = {
+    "app_title": "Ayo Up",
+    "open_image": "Atidaryti vaizdą",
+    "select_output": "Pasirinkti išsaugojimo aplanką",
+    "run": "Vykdyti",
+    "exit": "Uždaryti",
+    "settings": "Nustatymai",
+    "settings_language": "Kalba",
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "scale": "Mastelis",
+    "no_model": "Modelis neįdiegtas",
+    "tooltip_select_image": "Pasirinkite vaizdą",
+    "tooltip_select_output": "Pasirinkite išsaugojimo aplanką",
+    "theme": "Tema",
+    "theme_system": "Sistemos",
+    "theme_light": "Šviesi",
+    "theme_dark": "Tamsi",
+}
+

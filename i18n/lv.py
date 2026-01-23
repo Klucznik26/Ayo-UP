@@ -1,0 +1,20 @@
+STRINGS = {
+    "app_title": "Ayo Up",
+    "open_image": "Atvērt attēlu",
+    "select_output": "Izvēlēties saglabāšanas mapi",
+    "run": "Palaist",
+    "exit": "Aizvērt",
+    "settings": "Iestatījumi",
+    "settings_language": "Valoda",
+    "save": "Saglabāt",
+    "cancel": "Atcelt",
+    "scale": "Mērogs",
+    "no_model": "Modelis nav instalēts",
+    "tooltip_select_image": "Izvēlieties attēlu",
+    "tooltip_select_output": "Izvēlieties saglabāšanas mapi",
+    "theme": "Motīvs",
+    "theme_system": "Sistēmas",
+    "theme_light": "Gaišs",
+    "theme_dark": "Tumšs",
+}
+

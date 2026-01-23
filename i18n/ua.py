@@ -1,0 +1,20 @@
+STRINGS = {
+    "app_title": "Ayo Up",
+    "open_image": "Відкрити зображення",
+    "select_output": "Вибрати папку збереження",
+    "run": "Запустити",
+    "exit": "Закрити",
+    "settings": "Налаштування",
+    "settings_language": "Мова",
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "scale": "Масштаб",
+    "no_model": "Модель не встановлена",
+    "tooltip_select_image": "Виберіть зображення",
+    "tooltip_select_output": "Виберіть папку збереження",
+    "theme": "Тема",
+    "theme_system": "Системна",
+    "theme_light": "Світла",
+    "theme_dark": "Темна",
+}
+

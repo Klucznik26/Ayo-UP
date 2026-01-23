@@ -1,0 +1,20 @@
+STRINGS = {
+    "app_title": "Ayo Up",
+    "open_image": "Open image",
+    "select_output": "Select output folder",
+    "run": "Run",
+    "exit": "Exit",
+    "settings": "Settings",
+    "settings_language": "Language",
+    "save": "Save",
+    "cancel": "Cancel",
+    "scale": "Scale",
+    "no_model": "No model installed",
+    "tooltip_select_image": "Select an image",
+    "tooltip_select_output": "Select output folder",
+    "theme": "Theme",
+    "theme_system": "System",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+}
+
