@@ -1,4 +1,4 @@
-# Ayo Up
+# Ayo Up v 1.0.1
 
 Minimalist image upscaler based on **waifu2x-ncnn-vulkan**.
 
@@ -20,7 +20,7 @@ Ayo Up does one thing — and does not try to do more.
 
 ---
 
-## Features (v1.0)
+## Features (v1.1)
 
 - image upscaling **x2** and **x4**
 - drag & drop support
@@ -28,8 +28,9 @@ Ayo Up does one thing — and does not try to do more.
 - output directory selection
 - automatic output file naming (`_AUPx2`, `_AUPx4`)
 - themes: light / dark / system
-- multilingual user interface:
-  - PL / EN / UA
+- **Smart Engine Validation**: automatic check for `ncnn-vulkan` binaries
+- **Multilingual user interface**:
+  - PL / EN / UA / **PT (New!)**
   - LV / LT / EE
 
 ---
@@ -45,7 +46,7 @@ Ayo Up does one thing — and does not try to do more.
 
 ## Requirements
 
-- Linux
+- Linux (tested on Fedora and OpenSUSE)
 - Python 3.9 or newer
 - waifu2x-ncnn-vulkan (installed or provided manually)
 - Vulkan-capable GPU (recommended)
@@ -55,4 +56,5 @@ Ayo Up does one thing — and does not try to do more.
 ## Running the application
 
 ```bash
-python AyoUp.py
+# Recommended: use virtual environment
+python main.py
