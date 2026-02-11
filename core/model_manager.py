@@ -26,9 +26,20 @@ def install_model_from_path(source: Path) -> None:
     - katalogiem
     - pojedynczym plikiem
     """
-    ensure_model_dirs()
-
     if source.is_dir():
+        # Walidacja: sprawdzamy czy w katalogu jest plik wykonywalny
+        has_exe = any(
+            f.is_file() and "ncnn-vulkan" in f.name
+            for f in source.iterdir()
+        )
+        if not has_exe:
+            raise ValueError("Wybrany katalog nie zawiera pliku wykonywalnego upscalera (ncnn-vulkan).")
+
+        # Czyszczenie starej wersji przed instalacją nowej
+        if ENGINE_DIR.exists():
+            shutil.rmtree(ENGINE_DIR)
+        ensure_model_dirs()
+
         for item in source.iterdir():
             target = ENGINE_DIR / item.name
             if item.is_dir():
@@ -37,6 +48,7 @@ def install_model_from_path(source: Path) -> None:
                 shutil.copy2(item, target)
 
     elif source.is_file():
+        ensure_model_dirs()
         shutil.copy2(source, ENGINE_DIR / source.name)
 
     else:

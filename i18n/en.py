@@ -16,5 +16,10 @@ STRINGS = {
     "theme_system": "System",
     "theme_light": "Light",
     "theme_dark": "Dark",
+    "model": "AI Model",
+    "load_upscaler": "Load upscaler",
+    "select_model_dir": "Select model directory",
+    "model_success": "Model loaded successfully.",
+    "model_error": "Error loading model",
+    "error": "Error",
 }
-

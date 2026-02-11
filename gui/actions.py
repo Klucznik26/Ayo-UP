@@ -9,6 +9,7 @@ from core.engine_manager import run_waifu2x
 from core.model_manager import is_model_available
 from gui.settings_dialog import SettingsDialog
 from i18n import tr
+from config.settings import load_settings, save_settings
 
 
 class MainWindowActions:
@@ -20,7 +21,8 @@ class MainWindowActions:
             self,
             tr("open_image"),
             "",
-            "Images (*.png *.jpg *.jpeg *.webp)"
+            "Images (*.png *.jpg *.jpeg *.webp)",
+            options=QFileDialog.DontUseNativeDialog
         )
         if path:
             self._load_image_from_path(path)
@@ -46,10 +48,15 @@ class MainWindowActions:
     def _choose_output_dir(self):
         path = QFileDialog.getExistingDirectory(
             self,
-            tr("select_output")
+            tr("select_output"),
+            "",
+            QFileDialog.DontUseNativeDialog
         )
         if path:
             self.output_dir = path
+            settings = load_settings()
+            settings["output_dir"] = path
+            save_settings(settings)
             self._update_run_state()
 
     # ==================================================
@@ -125,4 +132,3 @@ class MainWindowActions:
         dialog.exec()
         self.retranslate_ui()
         self._update_run_state()
-

@@ -6,6 +6,7 @@ from .ua import STRINGS as UA
 from .lv import STRINGS as LV
 from .lt import STRINGS as LT
 from .ee import STRINGS as EE
+from .pt import STRINGS as PT
 
 _LANG_MAP = {
     "pl": PL,
@@ -14,6 +15,7 @@ _LANG_MAP = {
     "lv": LV,
     "lt": LT,
     "ee": EE,
+    "pt": PT,
 }
 
 

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from PySide6.QtWidgets import (
     QDialog,
     QVBoxLayout,
@@ -5,8 +7,11 @@ from PySide6.QtWidgets import (
     QComboBox,
     QPushButton,
     QHBoxLayout,
+    QFileDialog,
+    QMessageBox,
 )
 
+from core.model_manager import install_model_from_path
 from config.settings import load_settings, save_settings
 from i18n import tr
 
@@ -16,7 +21,7 @@ class SettingsDialog(QDialog):
         super().__init__(parent)
 
         self.setModal(True)
-        self.setFixedSize(320, 240)
+        self.setFixedSize(320, 340)
 
         self.settings = load_settings()
 
@@ -36,6 +41,7 @@ class SettingsDialog(QDialog):
         self.language_combo.addItem("Latviešu", "lv")
         self.language_combo.addItem("Lietuvių", "lt")
         self.language_combo.addItem("Eesti", "ee")
+        self.language_combo.addItem("Português", "pt")
 
         current_lang = self.settings.get("language", "pl")
         index = self.language_combo.findData(current_lang)
@@ -65,6 +71,16 @@ class SettingsDialog(QDialog):
             self.theme_combo.setCurrentIndex(index)
 
         layout.addWidget(self.theme_combo)
+
+        # =========================
+        # MODEL
+        # =========================
+        self.lbl_model = QLabel()
+        layout.addWidget(self.lbl_model)
+
+        self.btn_load_model = QPushButton()
+        self.btn_load_model.clicked.connect(self._load_model)
+        layout.addWidget(self.btn_load_model)
 
         layout.addStretch()
 
@@ -98,6 +114,24 @@ class SettingsDialog(QDialog):
         self.retranslate_ui()
 
     # =========================
+    # MODEL
+    # =========================
+    def _load_model(self):
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            tr("select_model_dir"),
+            "",
+            "Upscalers (*-ncnn-vulkan *);;All Files (*)",
+            options=QFileDialog.DontUseNativeDialog
+        )
+        if path:
+            try:
+                install_model_from_path(Path(path).parent)
+                QMessageBox.information(self, tr("app_title"), tr("model_success"))
+            except Exception as e:
+                QMessageBox.critical(self, tr("error"), f"{tr('model_error')}:\n{e}")
+
+    # =========================
     # ZAPIS
     # =========================
     def _save(self):
@@ -114,6 +148,9 @@ class SettingsDialog(QDialog):
 
         self.lbl_language.setText(tr("settings_language"))
         self.lbl_theme.setText(tr("theme"))
+
+        self.lbl_model.setText(tr("model"))
+        self.btn_load_model.setText(tr("load_upscaler"))
 
         self.btn_save.setText(tr("save"))
         self.btn_cancel.setText(tr("cancel"))

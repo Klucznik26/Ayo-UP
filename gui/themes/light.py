@@ -31,4 +31,8 @@ QLabel {
 QFrame {
     background-color: #F6F0E6;
 }
+
+QDialog {
+    background-color: #EFE6D6;
+}
 """

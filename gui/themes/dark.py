@@ -92,5 +92,68 @@ QSlider::add-page:horizontal {
     background: #3E3832;
     border-radius: 3px;
 }
-"""
 
+/* =========================
+   DIALOGI (Wybór plików, Ustawienia)
+   ========================= */
+QDialog {
+    background-color: #2F2A25;
+    color: #E6DED2;
+}
+
+QTreeView, QListView {
+    background-color: #3A342E;
+    color: #E6DED2;
+    border: 1px solid #4A423B;
+    outline: none;
+}
+
+QTreeView::item:selected, QListView::item:selected {
+    background-color: #9C5532;
+    color: #FFFFFF;
+}
+
+QHeaderView::section {
+    background-color: #3E3832;
+    color: #E6DED2;
+    border: none;
+    padding: 4px;
+}
+
+QLineEdit {
+    background-color: #3A342E;
+    color: #E6DED2;
+    border: 1px solid #5A5248;
+    border-radius: 4px;
+}
+
+QComboBox {
+    background-color: #3E3832;
+    color: #E6DED2;
+    border: 1px solid #5A5248;
+    padding: 4px;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+/* =========================
+   NARZĘDZIA (np. nawigacja w QFileDialog)
+   ========================= */
+QToolButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #E6DED2;
+    padding: 4px;
+}
+
+QToolButton:hover {
+    background-color: #4A433C;
+}
+
+QToolButton:pressed {
+    background-color: #352F2A;
+}
+"""

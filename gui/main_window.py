@@ -20,6 +20,7 @@ from gui.settings_dialog import SettingsDialog
 from gui.themes import ThemeManager
 
 from core.model_manager import ensure_model_dirs
+from config.settings import load_settings
 from i18n import tr
 
 
@@ -31,7 +32,8 @@ class MainWindow(QMainWindow, MainWindowActions):
         # STAN PODSTAWOWY
         # =========================
         self.input_image = None
-        self.output_dir = None
+        settings = load_settings()
+        self.output_dir = settings.get("output_dir", "")
 
         ensure_model_dirs()
 
@@ -166,7 +168,7 @@ class MainWindow(QMainWindow, MainWindowActions):
     # I18N
     # ==================================================
     def retranslate_ui(self):
-        self.setWindowTitle(tr("app_title"))
+        self.setWindowTitle(f"{tr('app_title')} v 1.0.1")
         self.btn_open.setText(tr("open_image"))
         self.btn_output.setText(tr("select_output"))
         self.btn_run.setText(tr("run"))

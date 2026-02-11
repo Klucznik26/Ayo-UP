@@ -16,7 +16,10 @@ STRINGS = {
     "theme_system": "Systemowy",
     "theme_light": "Jasny",
     "theme_dark": "Ciemny",
+    "model": "Model AI",
+    "load_upscaler": "Wczytaj upscaler",
+    "select_model_dir": "Wybierz katalog z modelem",
+    "model_success": "Model został wczytany pomyślnie.",
+    "model_error": "Błąd podczas wczytywania modelu",
+    "error": "Błąd",
 }
-
-
-

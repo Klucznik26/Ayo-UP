@@ -16,5 +16,10 @@ STRINGS = {
     "theme_system": "Системна",
     "theme_light": "Світла",
     "theme_dark": "Темна",
+    "model": "AI Модель",
+    "load_upscaler": "Завантажити апскейлер",
+    "select_model_dir": "Виберіть папку з моделлю",
+    "model_success": "Модель успішно завантажено.",
+    "model_error": "Помилка при завантаженні моделі",
+    "error": "Помилка",
 }
-

@@ -16,5 +16,10 @@ STRINGS = {
     "theme_system": "Sistemos",
     "theme_light": "Šviesi",
     "theme_dark": "Tamsi",
+    "model": "AI Modelis",
+    "load_upscaler": "Įkelti upscaler",
+    "select_model_dir": "Pasirinkite modelio aplanką",
+    "model_success": "Modelis sėkmingai įkeltas.",
+    "model_error": "Klaida įkeliant modelį",
+    "error": "Klaida",
 }
-

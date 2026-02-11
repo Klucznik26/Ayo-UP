@@ -16,5 +16,10 @@ STRINGS = {
     "theme_system": "Sistēmas",
     "theme_light": "Gaišs",
     "theme_dark": "Tumšs",
+    "model": "AI Modelis",
+    "load_upscaler": "Ielādēt upscaler",
+    "select_model_dir": "Izvēlēties modeļa mapi",
+    "model_success": "Modelis veiksmīgi ielādēts.",
+    "model_error": "Kļūda ielādējot modeli",
+    "error": "Kļūda",
 }
-

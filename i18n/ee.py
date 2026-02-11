@@ -16,5 +16,10 @@ STRINGS = {
     "theme_system": "Süsteemne",
     "theme_light": "Hele",
     "theme_dark": "Tume",
+    "model": "AI Mudel",
+    "load_upscaler": "Lae upscaler",
+    "select_model_dir": "Vali mudeli kaust",
+    "model_success": "Mudel on edukalt laetud.",
+    "model_error": "Viga mudeli laadimisel",
+    "error": "Viga",
 }
-
