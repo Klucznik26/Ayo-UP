@@ -1,4 +1,4 @@
-# Ayo UP
+# Ayo UP v 1.1.0
 
 **Simple image upscaler based on waifu2x-ncnn-vulkan**
 
