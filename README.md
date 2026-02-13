@@ -1,9 +1,9 @@
-# AyoCONVERT v1.1.0
+# Ayo UP
 
-**Simple and fast batch image converter for Linux**
+**Simple image upscaler based on waifu2x-ncnn-vulkan**
 
-AyoCONVERT is a lightweight desktop application designed for quick and distraction-free image format conversion.  
-Built for everyday workflows and batch processing.
+Ayo UP is a lightweight desktop application for image upscaling.  
+It provides a simple graphical interface for the powerful waifu2x-ncnn-vulkan engine.
 
 Part of the **Ayo Tools** suite.
 
@@ -11,23 +11,21 @@ Part of the **Ayo Tools** suite.
 
 ## ✨ Features
 
-### 🖼️ Image conversion
-Supports popular formats:
-- PNG
-- JPG / JPEG
-- BMP
-- TIFF
+### 🖼️ Image upscaling
+Upscale images using the waifu2x-ncnn-vulkan engine.
 
-Additional safeguards:
-- Prevents converting to the same source format
-- Safe output naming using automatic suffix
+Designed for:
+- AI generated images
+- illustrations and art
+- photos and wallpapers
+- batch image workflows
 
 ---
 
 ### 📂 Batch processing
-Designed to handle multiple files efficiently:
+The application supports processing multiple files at once:
 
-- Convert multiple images at once
+- Select multiple images
 - Load entire folders
 - Recursive search in subfolders
 - Drag & Drop support for:
@@ -37,23 +35,18 @@ Designed to handle multiple files efficiently:
 
 ---
 
-### 🌍 Multilingual
-The application supports multiple languages and can automatically match the system locale.
+### ⚡ Modern UX
 
-Currently supported languages:
-- Polish
-- English
-- Czech
-- Slovenian
-- Portuguese
-- Ukrainian
-- Latvian
-- Lithuanian
-- Estonian
-- Georgian
-- Spanish (from v1.1.1)
+#### Fan preview widget
+When multiple images are selected, the app displays a fan of random thumbnails showing the current queue.
 
-Qt system dialogs are translated automatically.
+#### Progress button
+The **Run** button also acts as a progress bar during processing.
+
+#### Smart interface behavior
+- File counter appears only for multiple files
+- UI clears automatically after completion
+- Buttons are locked during processing to prevent errors
 
 ---
 
@@ -67,29 +60,35 @@ Choose the interface that fits your workflow:
 
 ---
 
-### 🧠 UX focused
-The interface is designed for clarity and speed:
+### 🌍 Multilingual
+The interface supports multiple languages and updates instantly without restart.
 
-- Clear step-by-step workflow
-- Central drag & drop workspace
-- Queue counter for batch jobs
-- Clean interface after completion
+Currently supported languages:
+- Polish
+- English
+- Czech
+- Slovenian
+- Portuguese
+- Ukrainian
+- Latvian
+- Lithuanian
+- Estonian
+- Georgian
+
+Qt system dialogs are translated automatically.
 
 ---
 
 ## 🖼️ Screenshots
 
-### Main window — Dark theme
-![AyoCONVERT Dark](screenshots/main_dark.png)
+### Main window
+![Ayo UP](screenshots/main_dark.png)
 
-### Light theme
-![AyoCONVERT Light](screenshots/main_light.png)
+### Batch mode
+![Batch](screenshots/main_batch.png)
 
-### Relax theme
-![AyoCONVERT Relax](screenshots/main_relax.png)
-
-### Settings and languages
-![AyoCONVERT Settings](screenshots/settings.png)
+### Settings
+![Settings](screenshots/settings.png)
 
 ---
 
@@ -99,11 +98,6 @@ Developed and tested primarily on:
 - Fedora
 - openSUSE
 
-Packaging planned:
-- AppImage
-- Flatpak
-- Windows version
-
 ---
 
 ## 🚀 Run from source
@@ -111,9 +105,12 @@ Packaging planned:
 ### Requirements
 - Python 3.10+
 - PySide6
-- Pillow
 
 Install dependencies:
 
 ```bash
-pip install PySide6 Pillow
+pip install PySide6
+
+
+Run the application:
+python main.py
