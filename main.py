@@ -12,8 +12,11 @@ from gui.main_window import MainWindow
 
 def main():
     app = QApplication(sys.argv)
-    from gui.themes import ThemeManager
+    from themes import ThemeManager
+    from i18n import setup_qt_translations
+    
     ThemeManager.apply(app)
+    setup_qt_translations(app)
 
     window = MainWindow()
     window.show()

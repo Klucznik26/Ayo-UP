@@ -1,59 +1,119 @@
-# Ayo Up
+# AyoCONVERT v1.1.0
 
-Minimalistyczna aplikacja do powiększania obrazów (upscaling),
-oparta o **waifu2x-ncnn-vulkan**.
+**Simple and fast batch image converter for Linux**
 
-Autor: **Klucznik**
+AyoCONVERT is a lightweight desktop application designed for quick and distraction-free image format conversion.  
+Built for everyday workflows and batch processing.
 
----
-
-## Czym jest Ayo Up?
-
-**Ayo Up** to niewielka aplikacja desktopowa służąca do powiększania obrazów,
-zbudowana wokół silnika **waifu2x-ncnn-vulkan**.
-
-Projekt powstał z myślą o:
-- prostocie,
-- czytelnym i spokojnym interfejsie,
-- jednej, jasno określonej funkcji.
-
-Ayo Up robi jedną rzecz — i nie próbuje robić więcej.
+Part of the **Ayo Tools** suite.
 
 ---
 
-## Funkcje (v1.0)
+## ✨ Features
 
-- powiększanie obrazów **x2** oraz **x4**
-- obsługa przeciągnij i upuść (drag & drop)
-- podgląd obrazu
-- wybór katalogu zapisu
-- automatyczne nazewnictwo plików (`_AUPx2`, `_AUPx4`)
-- motywy: jasny / ciemny / systemowy
-- wielojęzyczny interfejs użytkownika:
-  - PL / EN / UA
-  - LV / LT / EE
+### 🖼️ Image conversion
+Supports popular formats:
+- PNG
+- JPG / JPEG
+- BMP
+- TIFF
 
----
-
-## Czego Ayo Up nie robi
-
-- nie jest edytorem graficznym
-- nie obsługuje upscalingu wsadowego (batch) — jeszcze
-- nie instaluje silnika waifu2x za użytkownika
-- nie jest „kombajnem AI”
+Additional safeguards:
+- Prevents converting to the same source format
+- Safe output naming using automatic suffix
 
 ---
 
-## Wymagania
+### 📂 Batch processing
+Designed to handle multiple files efficiently:
 
-- Linux
-- Python 3.9 lub nowszy
-- waifu2x-ncnn-vulkan (zainstalowany lub dostarczony ręcznie)
-- karta graficzna z obsługą Vulkan (zalecane)
+- Convert multiple images at once
+- Load entire folders
+- Recursive search in subfolders
+- Drag & Drop support for:
+  - single files
+  - multiple files
+  - folders
 
 ---
 
-## Uruchamianie aplikacji
+### 🌍 Multilingual
+The application supports multiple languages and can automatically match the system locale.
+
+Currently supported languages:
+- Polish
+- English
+- Czech
+- Slovenian
+- Portuguese
+- Ukrainian
+- Latvian
+- Lithuanian
+- Estonian
+- Georgian
+- Spanish (from v1.1.1)
+
+Qt system dialogs are translated automatically.
+
+---
+
+### 🎨 Themes
+Choose the interface that fits your workflow:
+
+- Dark theme (default)
+- Light theme
+- Relax theme (low-contrast green palette)
+- System theme
+
+---
+
+### 🧠 UX focused
+The interface is designed for clarity and speed:
+
+- Clear step-by-step workflow
+- Central drag & drop workspace
+- Queue counter for batch jobs
+- Clean interface after completion
+
+---
+
+## 🖼️ Screenshots
+
+### Main window — Dark theme
+![AyoCONVERT Dark](screenshots/main_dark.png)
+
+### Light theme
+![AyoCONVERT Light](screenshots/main_light.png)
+
+### Relax theme
+![AyoCONVERT Relax](screenshots/main_relax.png)
+
+### Settings and languages
+![AyoCONVERT Settings](screenshots/settings.png)
+
+---
+
+## 🐧 Linux-first
+
+Developed and tested primarily on:
+- Fedora
+- openSUSE
+
+Packaging planned:
+- AppImage
+- Flatpak
+- Windows version
+
+---
+
+## 🚀 Run from source
+
+### Requirements
+- Python 3.10+
+- PySide6
+- Pillow
+
+Install dependencies:
 
 ```bash
-python AyoUp.py
+pip install PySide6 Pillow

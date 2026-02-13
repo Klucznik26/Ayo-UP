@@ -9,11 +9,20 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QFileDialog,
     QMessageBox,
+    QApplication,
 )
 
 from core.model_manager import install_model_from_path
 from config.settings import load_settings, save_settings
-from i18n import tr
+from i18n import tr, setup_qt_translations
+
+
+def get_flag(country_code: str) -> str:
+    """
+    Generuje emoji flagi na podstawie kodu kraju (ISO 3166-1 alpha-2).
+    Używa standardu Unicode Regional Indicator Symbols.
+    """
+    return "".join(chr(ord(c) + 127397) for c in country_code.upper())
 
 
 class SettingsDialog(QDialog):
@@ -35,13 +44,24 @@ class SettingsDialog(QDialog):
         layout.addWidget(self.lbl_language)
 
         self.language_combo = QComboBox()
-        self.language_combo.addItem("Polski", "pl")
-        self.language_combo.addItem("English", "en")
-        self.language_combo.addItem("Українська", "ua")
-        self.language_combo.addItem("Latviešu", "lv")
-        self.language_combo.addItem("Lietuvių", "lt")
-        self.language_combo.addItem("Eesti", "ee")
-        self.language_combo.addItem("Português", "pt")
+        
+        # Lista języków: (kod_języka, nazwa, kod_kraju_dla_flagi)
+        languages = [
+            ("pl", "Polski", "PL"),
+            ("en", "English", "GB"),
+            ("ua", "Українська", "UA"),
+            ("lv", "Latviešu", "LV"),
+            ("lt", "Lietuvių", "LT"),
+            ("ee", "Eesti", "EE"),
+            ("pt", "Português", "PT"),
+            ("cz", "Čeština", "CZ"),
+            ("si", "Slovenščina", "SI"),
+            ("ge", "ქართული", "GE"),
+        ]
+
+        for lang_code, name, country_code in languages:
+            flag = get_flag(country_code)
+            self.language_combo.addItem(f"{flag}  {name}", lang_code)
 
         current_lang = self.settings.get("language", "pl")
         index = self.language_combo.findData(current_lang)
@@ -64,6 +84,7 @@ class SettingsDialog(QDialog):
         self.theme_combo.addItem(tr("theme_system"), "system")
         self.theme_combo.addItem(tr("theme_light"), "light")
         self.theme_combo.addItem(tr("theme_dark"), "dark")
+        self.theme_combo.addItem(tr("theme_relax"), "relax")
 
         current_theme = self.settings.get("theme", "system")
         index = self.theme_combo.findData(current_theme)
@@ -111,6 +132,7 @@ class SettingsDialog(QDialog):
     def _on_language_changed(self):
         self.settings["language"] = self.language_combo.currentData()
         save_settings(self.settings)
+        setup_qt_translations(QApplication.instance())
         self.retranslate_ui()
 
     # =========================
@@ -162,6 +184,7 @@ class SettingsDialog(QDialog):
         self.theme_combo.addItem(tr("theme_system"), "system")
         self.theme_combo.addItem(tr("theme_light"), "light")
         self.theme_combo.addItem(tr("theme_dark"), "dark")
+        self.theme_combo.addItem(tr("theme_relax"), "relax")
         index = self.theme_combo.findData(current_theme)
         if index >= 0:
             self.theme_combo.setCurrentIndex(index)
