@@ -11,22 +11,23 @@ Built for creators who need high-quality upscaling with a clean interface and ef
 Part of the Ayo Ecosystem.
 
 📸 Program Preview
-Dark Theme	Creative Theme	Relax Theme	Settings
+Dark Theme	Light Theme	Relax Theme	Batch Mode	Settings
 
+	
 	
 	
 	
 🆕 What’s New in 1.2
 
-🎨 New Creative Theme with modern dark-blue palette (#1B262C / #3282B8)
+🎨 New Creative Theme added to the theme system
 
-🌍 Full multilingual expansion – now supports 12 languages
+🌍 Expanded multilingual support (12 languages)
 
-🧠 Internal Qt Translation System – fully translated file dialogs without system .qm dependency
+🧠 Internal Qt translation layer – fully translated file dialogs without system .qm dependency
 
-✨ Image discard animation – smooth rotate + fade transition when processing queue
+✨ Smooth discard animation (rotate -90° + fade transition)
 
-⚙️ Code cleanup and performance optimizations
+⚙️ Code cleanup and performance improvements
 
 🧹 Removed artificial delays and debug prints
 
@@ -90,7 +91,7 @@ After processing, images smoothly rotate (-90°) and fade out, revealing the nex
 
 🎨 Themes
 
-AyoUP supports a consistent visual identity across the ecosystem:
+AyoUP supports a consistent visual identity:
 
 Dark Theme (default)
 
@@ -100,7 +101,7 @@ Relax Theme
 
 Creative Theme (new in 1.2)
 
-All dialogs use non-native Qt rendering for full theme consistency.
+All dialogs use non-native Qt rendering for full theme consistency and localization control.
 
 🌍 Supported Languages
 
@@ -171,8 +172,8 @@ More projects:
 
 📥 Installation
 1️⃣ Clone repository
-git clone https://github.com/Klucznik26/AyoUP.git
-cd AyoUP
+git clone https://github.com/Klucznik26/Ayo-UP.git
+cd Ayo-UP
 2️⃣ Install dependencies
 pip install PySide6
 3️⃣ Download waifu2x engine
@@ -184,3 +185,9 @@ Place the executable in the project directory or configure its path in settings.
 
 4️⃣ Run application
 python main.py
+
+Teraz wystarczy:
+
+git add README.md
+git commit -m "Fix README screenshots paths"
+git push
