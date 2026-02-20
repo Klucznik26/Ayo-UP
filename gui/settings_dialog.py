@@ -57,6 +57,8 @@ class SettingsDialog(QDialog):
             ("cz", "Čeština", "CZ"),
             ("si", "Slovenščina", "SI"),
             ("ge", "ქართული", "GE"),
+            ("es", "Español", "ES"),
+            ("ro", "Română", "RO"),
         ]
 
         for lang_code, name, country_code in languages:
@@ -81,15 +83,6 @@ class SettingsDialog(QDialog):
         layout.addWidget(self.lbl_theme)
 
         self.theme_combo = QComboBox()
-        self.theme_combo.addItem(tr("theme_system"), "system")
-        self.theme_combo.addItem(tr("theme_light"), "light")
-        self.theme_combo.addItem(tr("theme_dark"), "dark")
-        self.theme_combo.addItem(tr("theme_relax"), "relax")
-
-        current_theme = self.settings.get("theme", "system")
-        index = self.theme_combo.findData(current_theme)
-        if index >= 0:
-            self.theme_combo.setCurrentIndex(index)
 
         layout.addWidget(self.theme_combo)
 
@@ -139,11 +132,12 @@ class SettingsDialog(QDialog):
     # MODEL
     # =========================
     def _load_model(self):
+        filters = f"{tr('filter_upscalers')} (*-ncnn-vulkan *);;{tr('filter_all_files')} (*)"
         path, _ = QFileDialog.getOpenFileName(
             self,
             tr("select_model_dir"),
             "",
-            "Upscalers (*-ncnn-vulkan *);;All Files (*)",
+            filters,
             options=QFileDialog.DontUseNativeDialog
         )
         if path:
@@ -179,12 +173,17 @@ class SettingsDialog(QDialog):
 
         # aktualizacja nazw motywów po zmianie języka
         current_theme = self.theme_combo.currentData()
+        # Jeśli combo jest puste (przy starcie), pobierz z ustawień
+        if not current_theme:
+            current_theme = self.settings.get("theme", "system")
+
         self.theme_combo.blockSignals(True)
         self.theme_combo.clear()
         self.theme_combo.addItem(tr("theme_system"), "system")
         self.theme_combo.addItem(tr("theme_light"), "light")
         self.theme_combo.addItem(tr("theme_dark"), "dark")
         self.theme_combo.addItem(tr("theme_relax"), "relax")
+        self.theme_combo.addItem(tr("theme_creative"), "creative")
         index = self.theme_combo.findData(current_theme)
         if index >= 0:
             self.theme_combo.setCurrentIndex(index)

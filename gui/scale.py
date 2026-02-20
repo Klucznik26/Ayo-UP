@@ -18,12 +18,12 @@ class ScaleController:
         # LABEL
         # =========================
         self.label = QLabel()
+        self.label.setObjectName("scaleLabel")
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setStyleSheet("""
             QLabel {
                 font-size: 13px;
                 font-weight: 500;
-                color: palette(windowText);
             }
         """)
         parent_layout.addWidget(self.label)

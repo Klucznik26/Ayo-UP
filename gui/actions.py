@@ -1,10 +1,9 @@
 import os
-import time
 from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog, QApplication
 from PySide6.QtGui import QPixmap
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QEventLoop
 
 from core.engine_manager import run_waifu2x
 from core.model_manager import is_model_available
@@ -20,11 +19,12 @@ class MainWindowActions:
     # OBRAZ
     # ==================================================
     def _open_files_dialog(self):
+        filters = f"{tr('filter_images')} (*.png *.jpg *.jpeg *.webp)"
         paths, _ = QFileDialog.getOpenFileNames(
             self,
             tr("open_files"),
             "",
-            "Images (*.png *.jpg *.jpeg *.webp)",
+            filters,
             options=QFileDialog.DontUseNativeDialog
         )
         if paths:
@@ -91,7 +91,7 @@ class MainWindowActions:
             self,
             tr("select_output"),
             "",
-            QFileDialog.DontUseNativeDialog
+            options=QFileDialog.DontUseNativeDialog
         )
         if path:
             self.output_dir = path
@@ -156,16 +156,25 @@ class MainWindowActions:
         self.btn_run.set_progress(0, total)
         self.model_status_label.show()
         
+        # Upewnij się, że pierwszy obraz jest poprawnie załadowany do podglądu
+        if self.input_files:
+            first_pix = QPixmap(self.input_files[0]).scaled(
+                self.preview_label.size(),
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            )
+            self.preview_label.setPixmap(first_pix)
+            self.preview_label.set_rotation(0)
+
         for i, file_path in enumerate(self.input_files, 1):
             self.model_status_label.setText(tr("processing").format(i, total))
             QApplication.processEvents()  # Odśwież UI
 
             try:
                 input_path = Path(file_path).resolve()
-                base, ext = os.path.splitext(input_path.name)
-                output_path = (Path(self.output_dir) / f"{base}_AUPx{scale}{ext}").resolve()
-                
-                print(f"Zapisywanie do: {output_path}")
+                # Użycie pathlib do budowania nazwy pliku (czyściej i szybciej)
+                output_filename = f"{input_path.stem}_AUPx{scale}{input_path.suffix}"
+                output_path = (Path(self.output_dir) / output_filename).resolve()
 
                 run_waifu2x(
                     input_image=str(input_path),
@@ -173,20 +182,38 @@ class MainWindowActions:
                     scale=int(scale),
                 )
 
-                # Krótka pauza dla stabilności
-                time.sleep(0.1)
-
                 if not output_path.exists():
-                    print(f"Błąd: Plik nie powstał -> {output_path}")
                     errors.append(file_path)
                 else:
                     success_count += 1
 
-            except Exception as e:
-                print(f"Wyjątek przy pliku {file_path}: {e}")
+            except Exception:
                 errors.append(file_path)
             
             self.btn_run.set_progress(i, total)
+
+            # =========================
+            # ANIMACJA PRZEJŚCIA
+            # =========================
+            # Przygotuj następny obraz (jeśli istnieje)
+            if i < len(self.input_files):
+                next_path = self.input_files[i] # i to indeks następnego (bo enumerate od 1)
+                next_pix = QPixmap(next_path).scaled(
+                    self.preview_label.size(),
+                    Qt.KeepAspectRatio,
+                    Qt.SmoothTransformation
+                )
+                self.preview_label.set_next_pixmap(next_pix)
+            
+            # Uruchom animację i czekaj na jej koniec
+            loop = QEventLoop()
+            anim = self.preview_label.animate_discard()
+            anim.finished.connect(loop.quit)
+            anim.start()
+            loop.exec() # Blokuje pętlę for, ale pozwala działać GUI
+
+            # Po animacji: podmień obraz na wierzchu
+            self.preview_label.apply_next_image()
 
         self.btn_run.reset_progress()
         self.btn_close.setEnabled(True)

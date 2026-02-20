@@ -198,7 +198,7 @@ class MainWindow(QMainWindow, MainWindowActions):
     # I18N
     # ==================================================
     def retranslate_ui(self):
-        self.setWindowTitle(f"{tr('app_title')} v 1.0.1")
+        self.setWindowTitle("AyoUP v 1.2")
         self.btn_open.setText(tr("open_image"))
         self.act_files.setText(tr("open_files"))
         self.act_folder.setText(tr("open_folder"))

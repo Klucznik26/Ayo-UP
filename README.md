@@ -1,237 +1,186 @@
-# Ayo UP v 1.1.0
+AyoUP 1.2 – Intelligent Image Upscaler 🚀🖼️
 
 
-**Simple image upscaler based on waifu2x-ncnn-vulkan**
 
-Ayo UP is a lightweight desktop application for image upscaling.  
-It provides a simple graphical interface for the powerful waifu2x-ncnn-vulkan engine.
 
-Part of the **Ayo Tools** suite.
 
----
 
-## ✨ Features
+AyoUP is a fast and lightweight desktop image upscaler powered by the waifu2x-ncnn-vulkan engine.
+Built for creators who need high-quality upscaling with a clean interface and efficient workflow.
 
-### 🖼️ Image upscaling
-Upscale images using the waifu2x-ncnn-vulkan engine.
+Part of the Ayo Ecosystem.
 
-Designed for:
-- AI generated images
-- illustrations and art
-- photos and wallpapers
-- batch image workflows
+📸 Program Preview
+Dark Theme	Creative Theme	Relax Theme	Settings
 
----
+	
+	
+	
+🆕 What’s New in 1.2
 
-### 📂 Batch processing
-The application supports processing multiple files at once:
+🎨 New Creative Theme with modern dark-blue palette (#1B262C / #3282B8)
 
-- Select multiple images
-- Load entire folders
-- Recursive search in subfolders
-- Drag & Drop support for:
-  - single files
-  - multiple files
-  - folders
+🌍 Full multilingual expansion – now supports 12 languages
 
----
+🧠 Internal Qt Translation System – fully translated file dialogs without system .qm dependency
 
-### ⚡ Modern UX
+✨ Image discard animation – smooth rotate + fade transition when processing queue
 
-#### Fan preview widget
-When multiple images are selected, the app displays a fan of random thumbnails showing the current queue.
+⚙️ Code cleanup and performance optimizations
 
-#### Progress button
-The **Run** button also acts as a progress bar during processing.
+🧹 Removed artificial delays and debug prints
 
-#### Smart interface behavior
-- File counter appears only for multiple files
-- UI clears automatically after completion
-- Buttons are locked during processing to prevent errors
+🗂️ Refactored file handling using pathlib
 
----
+🚀 Key Features
+🖼️ High-Quality Image Upscaling
 
-### 🎨 Themes
-Choose the interface that fits your workflow:
+Upscale images using the powerful waifu2x-ncnn-vulkan engine.
 
-- Dark theme (default)
-- Light theme
-- Relax theme (low-contrast green palette)
-- System theme
+Perfect for:
 
----
+AI-generated images
 
-### 🌍 Multilingual
-The interface supports multiple languages and updates instantly without restart.
+illustrations & digital art
 
-Currently supported languages:
-- Polish
-- English
-- Czech
-- Slovenian
-- Portuguese
-- Ukrainian
-- Latvian
-- Lithuanian
-- Estonian
-- Georgian
+wallpapers
 
-Qt system dialogs are translated automatically.
+photography
 
----
+batch workflows
 
-**Simple image upscaler based on waifu2x-ncnn-vulkan**
+📂 Advanced Batch Processing
 
-Ayo UP is a lightweight desktop application for image upscaling.  
-It provides a simple graphical interface for the powerful waifu2x-ncnn-vulkan engine.
+Process multiple files effortlessly:
 
-Part of the **Ayo Tools** suite.
+Select multiple images
 
----
+Load entire folders
 
-## ✨ Features
+Recursive subfolder scanning
 
-### 🖼️ Image upscaling
-Upscale images using the waifu2x-ncnn-vulkan engine.
+Drag & Drop support:
 
-Designed for:
-- AI generated images
-- illustrations and art
-- photos and wallpapers
-- batch image workflows
+single files
 
----
+multiple files
 
-### 📂 Batch processing
-The application supports processing multiple files at once:
+directories
 
-- Select multiple images
-- Load entire folders
-- Recursive search in subfolders
-- Drag & Drop support for:
-  - single files
-  - multiple files
-  - folders
+⚡ Modern UX & Smart Interface
+🎴 Fan Preview System
 
----
+Displays a dynamic fan of thumbnails when multiple files are queued.
 
-### ⚡ Modern UX
+▶️ Smart Run Button
 
-#### Fan preview widget
-When multiple images are selected, the app displays a fan of random thumbnails showing the current queue.
+The Run button transforms into a live progress indicator during processing.
 
-#### Progress button
-The **Run** button also acts as a progress bar during processing.
+🧠 Intelligent UI Behavior
 
-#### Smart interface behavior
-- File counter appears only for multiple files
-- UI clears automatically after completion
-- Buttons are locked during processing to prevent errors
+File counter appears only when needed
 
----
+UI clears automatically after completion
 
-### 🎨 Themes
-Choose the interface that fits your workflow:
+Controls are locked during processing to prevent conflicts
 
-- Dark theme (default)
-- Light theme
-- Relax theme (low-contrast green palette)
-- System theme
+🎞️ Discard Animation (New in 1.2)
 
----
+After processing, images smoothly rotate (-90°) and fade out, revealing the next item in queue.
 
-### 🌍 Multilingual
-The interface supports multiple languages and updates instantly without restart.
+🎨 Themes
 
-Currently supported languages:
-- Polish
-- English
-- Czech
-- Slovenian
-- Portuguese
-- Ukrainian
-- Latvian
-- Lithuanian
-- Estonian
-- Georgian
+AyoUP supports a consistent visual identity across the ecosystem:
 
-Qt system dialogs are translated automatically.
+Dark Theme (default)
 
----
+Light Theme
 
-## 🖼️ Screenshots
+Relax Theme
 
-### Main window
-![Ayo UP](screenshots/main_dark.png)
-![Ayo UP](screenshots/main_relax.png)
-![Ayo UP](screenshots/main_light.png)
+Creative Theme (new in 1.2)
 
-### Batch mode
-![Batch](screenshots/main_batch.png)
+All dialogs use non-native Qt rendering for full theme consistency.
 
-### Settings
-![Settings](screenshots/settings.png)
+🌍 Supported Languages
 
----
+Fully translated interface including Qt file dialogs.
 
-## 🐧 Linux-first
+🇵🇱 Polish
 
-Developed and tested primarily on:
-- Fedora
-- openSUSE
+🇺🇸 English
 
----
+🇪🇸 Spanish
 
-## 🚀 Run from source
+🇷🇴 Romanian
 
-### Requirements
-- Python 3.10+
-- PySide6
+🇵🇹 Portuguese
 
-Install dependencies:
+🇺🇦 Ukrainian
 
-```bash
+🇨🇿 Czech
+
+🇸🇮 Slovenian
+
+🇱🇻 Latvian
+
+🇱🇹 Lithuanian
+
+🇪🇪 Estonian
+
+🇬🇪 Georgian
+
+The application uses an internal Qt translation layer to ensure consistent localization across all systems.
+
+🏗️ Architecture Highlights
+
+Modular GUI structure
+
+ThemeManager-based styling system
+
+InternalQtTranslator (no external .qm dependency)
+
+Fully non-native Qt dialogs for styling and localization control
+
+Modern file handling via pathlib
+
+Clean event loop (no blocking delays)
+
+🛠️ Technology
+
+Developed using a modern Python + Qt stack:
+
+Language: Python 3.10+
+
+GUI: PySide6 (Qt for Python)
+
+Engine: waifu2x-ncnn-vulkan
+
+Development Environment: Linux (Fedora / openSUSE)
+
+🌌 Ayo Ecosystem
+
+AyoARCH – ZIP image viewer
+
+AyoCONVERT – high-quality file conversion
+
+AyoSORT – intelligent image categorization
+
+More projects:
+👉 https://klucznik26.github.io/AyoWWW/
+
+📥 Installation
+1️⃣ Clone repository
+git clone https://github.com/Klucznik26/AyoUP.git
+cd AyoUP
+2️⃣ Install dependencies
 pip install PySide6
+3️⃣ Download waifu2x engine
 
-
-Run the application:
-python main.py
-
-## 🖼️ Screenshots
-
-### Main window
-![Ayo UP](screenshots/main_dark.png)
-
-### Batch mode
-![Batch](screenshots/main_batch.png)
-
-### Settings
-![Settings](screenshots/settings.png)
-
----
-
-## 🐧 Linux-first
-
-Developed and tested primarily on:
-- Fedora
-- openSUSE
-
----
-
-## 🚀 Run from source
-
-### waifu2x-ncnn-vulkan engine
-
-Ayo UP requires the external **waifu2x-ncnn-vulkan** engine.
-
-Download it from:  
+Download waifu2x-ncnn-vulkan from:
 https://github.com/nihui/waifu2x-ncnn-vulkan
 
-### Requirements
-- Python 3.10+
-- PySide6
+Place the executable in the project directory or configure its path in settings.
 
-Install dependencies:
-
-```bash
-pip install PySide6
+4️⃣ Run application
+python main.py

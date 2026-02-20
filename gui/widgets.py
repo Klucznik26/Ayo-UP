@@ -1,7 +1,7 @@
 import random
 from PySide6.QtWidgets import QLabel, QWidget, QPushButton
 from PySide6.QtGui import QPainter, QPixmap, QColor, QPainterPath
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Property, QPropertyAnimation, QEasingCurve, QPoint
 
 
 class DropImageLabel(QLabel):
@@ -9,6 +9,12 @@ class DropImageLabel(QLabel):
         super().__init__(parent)
         self.on_drop = on_drop
         self.setAcceptDrops(True)
+        self._rotation = 0.0
+        self._next_pixmap = None  # Obraz, który ma się pojawić pod spodem
+
+    # =========================
+    # DRAG & DROP
+    # =========================
 
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
@@ -27,6 +33,83 @@ class DropImageLabel(QLabel):
         # Przekazujemy listę ścieżek do handlera
         if self.on_drop:
             self.on_drop(paths)
+
+    # =========================
+    # ANIMACJA I RYSOWANIE
+    # =========================
+    def get_rotation(self):
+        return self._rotation
+
+    def set_rotation(self, angle):
+        self._rotation = angle
+        self.update()
+
+    # Rejestracja właściwości dla QPropertyAnimation
+    rotation = Property(float, get_rotation, set_rotation)
+
+    def set_next_pixmap(self, pixmap):
+        """Ustawia obraz, który będzie widoczny pod spodem podczas animacji."""
+        self._next_pixmap = pixmap
+        self.update()
+
+    def apply_next_image(self):
+        """Zatwierdza zmianę: następny obraz staje się obecnym, reset rotacji."""
+        if self._next_pixmap:
+            self.setPixmap(self._next_pixmap)
+            self._next_pixmap = None
+        else:
+            self.clear()
+        self._rotation = 0.0
+        self.update()
+
+    def animate_discard(self):
+        """Tworzy i zwraca animację odrzucenia obrazu w lewo."""
+        anim = QPropertyAnimation(self, b"rotation")
+        anim.setDuration(600)
+        anim.setStartValue(0.0)
+        anim.setEndValue(-90.0)  # Obrót w lewo o 90 stopni
+        anim.setEasingCurve(QEasingCurve.InBack) # Efekt "zamachu" przed ruchem
+        return anim
+
+    def paintEvent(self, event):
+        # Jeśli nie ma obrazka, rysujemy standardowo (np. tekst placeholder)
+        if not self.pixmap() or self.pixmap().isNull():
+            super().paintEvent(event)
+            return
+
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+
+        # 1. Rysuj NASTĘPNY obraz pod spodem (jeśli istnieje)
+        if self._next_pixmap and not self._next_pixmap.isNull():
+            # Centrujemy następny obraz
+            x = (self.width() - self._next_pixmap.width()) // 2
+            y = (self.height() - self._next_pixmap.height()) // 2
+            painter.drawPixmap(x, y, self._next_pixmap)
+
+        # 2. Rysuj OBECNY obraz z uwzględnieniem rotacji
+        painter.save()
+        
+        # Efekt zanikania (fade out) w miarę obrotu w lewo
+        if self._rotation < 0:
+            opacity = 1.0 - (abs(self._rotation) / 90.0)
+            painter.setOpacity(max(0.0, min(1.0, opacity)))
+        
+        # Oś obrotu: Lewy Dolny Róg
+        # Przesuwamy układ współrzędnych do lewego dolnego rogu widgetu
+        pivot_y = self.height()
+        painter.translate(0, pivot_y)
+        painter.rotate(self._rotation)
+        painter.translate(0, -pivot_y)
+
+        # Rysujemy obecny pixmap (wycentrowany w oryginalnym układzie)
+        current_pix = self.pixmap()
+        x = (self.width() - current_pix.width()) // 2
+        y = (self.height() - current_pix.height()) // 2
+        painter.drawPixmap(x, y, current_pix)
+
+        painter.restore()
 
 
 class FanPreviewWidget(QWidget):
