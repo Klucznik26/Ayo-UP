@@ -5,6 +5,7 @@ AyoUP 1.2 – Intelligent Image Upscaler 🚀🖼️
 
 
 
+
 AyoUP is a fast and lightweight desktop image upscaler powered by the waifu2x-ncnn-vulkan engine.
 Built for creators who need high-quality upscaling with a clean interface and efficient workflow.
 
