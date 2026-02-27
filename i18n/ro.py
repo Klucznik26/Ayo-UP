@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Selectează fișiere...",
     "open_folder": "Selectează dosar...",
     "select_output": "Selectează dosarul de destinație",
+    "select_upscaler": "Selectare upscaler",
     "run": "Execută",
     "exit": "Ieșire",
     "settings": "Setări",

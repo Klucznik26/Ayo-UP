@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (
     QApplication,
 )
 
-from core.model_manager import install_model_from_path
+from core.model_manager import install_model_from_zip
 from config.settings import load_settings, save_settings
 from i18n import tr, setup_qt_translations
 
@@ -59,6 +59,9 @@ class SettingsDialog(QDialog):
             ("ge", "ქართული", "GE"),
             ("es", "Español", "ES"),
             ("ro", "Română", "RO"),
+            ("fr", "Français", "FR"),
+            ("it", "Italiano", "IT"),
+            ("gr", "Ελληνικά", "GR"),
         ]
 
         for lang_code, name, country_code in languages:
@@ -132,7 +135,7 @@ class SettingsDialog(QDialog):
     # MODEL
     # =========================
     def _load_model(self):
-        filters = f"{tr('filter_upscalers')} (*-ncnn-vulkan *);;{tr('filter_all_files')} (*)"
+        filters = f"{tr('filter_zip')} (*.zip);;{tr('filter_all_files')} (*)"
         path, _ = QFileDialog.getOpenFileName(
             self,
             tr("select_model_dir"),
@@ -142,7 +145,7 @@ class SettingsDialog(QDialog):
         )
         if path:
             try:
-                install_model_from_path(Path(path).parent)
+                install_model_from_zip(Path(path))
                 QMessageBox.information(self, tr("app_title"), tr("model_success"))
             except Exception as e:
                 QMessageBox.critical(self, tr("error"), f"{tr('model_error')}:\n{e}")

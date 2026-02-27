@@ -1,5 +1,6 @@
 from pathlib import Path
 import shutil
+import zipfile
 
 from core.paths import MODELS_DIR
 
@@ -19,37 +20,35 @@ def is_model_available() -> bool:
     return any(ENGINE_DIR.iterdir())
 
 
-def install_model_from_path(source: Path) -> None:
+def get_model_names() -> list[str]:
     """
-    Kopiuje pliki modelu do katalogu aplikacji.
-    source może być:
-    - katalogiem
-    - pojedynczym plikiem
+    Zwraca listę nazw dostępnych modeli (nazwy podkatalogów).
     """
-    if source.is_dir():
-        # Walidacja: sprawdzamy czy w katalogu jest plik wykonywalny
-        has_exe = any(
-            f.is_file() and "ncnn-vulkan" in f.name
-            for f in source.iterdir()
-        )
-        if not has_exe:
-            raise ValueError("Wybrany katalog nie zawiera pliku wykonywalnego upscalera (ncnn-vulkan).")
+    ensure_model_dirs()
+    return [d.name for d in MODELS_DIR.iterdir() if d.is_dir()]
 
-        # Czyszczenie starej wersji przed instalacją nowej
-        if ENGINE_DIR.exists():
-            shutil.rmtree(ENGINE_DIR)
-        ensure_model_dirs()
 
-        for item in source.iterdir():
-            target = ENGINE_DIR / item.name
-            if item.is_dir():
-                shutil.copytree(item, target, dirs_exist_ok=True)
-            else:
-                shutil.copy2(item, target)
+def set_active_model(name: str) -> None:
+    """
+    Ustawia aktywny model poprzez aktualizację globalnych zmiennych.
+    """
+    global ENGINE_NAME, ENGINE_DIR
+    ENGINE_NAME = name
+    ENGINE_DIR = MODELS_DIR / name
 
-    elif source.is_file():
-        ensure_model_dirs()
-        shutil.copy2(source, ENGINE_DIR / source.name)
 
-    else:
-        raise ValueError("Nieprawidłowa ścieżka modelu")
+def install_model_from_zip(zip_path: Path) -> None:
+    """
+    Rozpakowuje archiwum ZIP do nowego katalogu w folderze modeli.
+    Nazwa katalogu będzie taka sama jak nazwa pliku ZIP (bez rozszerzenia).
+    """
+    model_name = zip_path.stem
+    target_dir = MODELS_DIR / model_name
+
+    # Jeśli katalog już istnieje, czyścimy go
+    if target_dir.exists():
+        shutil.rmtree(target_dir)
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    with zipfile.ZipFile(zip_path, 'r') as z:
+        z.extractall(target_dir)

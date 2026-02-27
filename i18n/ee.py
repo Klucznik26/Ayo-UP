@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Vali failid...",
     "open_folder": "Vali kaust...",
     "select_output": "Vali salvestuskaust",
+    "select_upscaler": "Vali upscaler",
     "run": "Käivita",
     "exit": "Sulge",
     "settings": "Seaded",

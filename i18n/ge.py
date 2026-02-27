@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "ფაილების არჩევა...",
     "open_folder": "საქაღალდის არჩევა...",
     "select_output": "შენახვის საქაღალდის არჩევა",
+    "select_upscaler": "Upscaler-ის არჩევა",
     "run": "გაშვება",
     "exit": "გასვლა",
     "settings": "პარამეტრები",

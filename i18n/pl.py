@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Wybierz pliki...",
     "open_folder": "Wybierz folder...",
     "select_output": "Wybierz katalog zapisu",
+    "select_upscaler": "Wybór upscalera",
     "run": "Wykonaj",
     "exit": "Zamknij",
     "settings": "Ustawienia",
@@ -43,4 +44,5 @@ STRINGS = {
     "filter_images": "Obrazy",
     "filter_upscalers": "Upscalery",
     "filter_all_files": "Wszystkie pliki",
+    "filter_zip": "Archiwum ZIP",
 }

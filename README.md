@@ -1,167 +1,251 @@
-# AyoUP 1.2 – Intelligent Image Upscaler 🚀🖼️
+AyoUP 1.3 – Intelligent Multi-Model Image Upscaler 🚀🖼️
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)  
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)  
-![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey.svg)
 
-**AyoUP** is a fast and lightweight desktop image upscaler powered by the waifu2x-ncnn-vulkan engine.  
-Built for creators who need high-quality upscaling with a clean interface and efficient workflow.
 
-Part of the **Ayo Ecosystem**.
 
----
 
-## 📸 Program Preview
 
-| Dark Theme | Light Theme | Relax Theme | Batch Mode | Settings |
-|:--:|:--:|:--:|:--:|:--:|
-| ![Dark](screenshots/main_dark.png) | ![Light](screenshots/main_light.png) | ![Relax](screenshots/main_relax.png) | ![Batch](screenshots/main_batch.png) | ![Settings](screenshots/settings.png) |
+AyoUP is a fast and lightweight desktop image upscaler supporting multiple NCNN-based Vulkan engines.
 
----
+Designed for creators who need high-quality upscaling with a clean interface, flexible model management, and efficient workflow.
 
-## 🆕 What’s New in 1.2
+Part of the Ayo Ecosystem.
 
-* 🎨 **New Creative Theme** added to the theme system
-* 🌍 Expanded multilingual support (12 languages)
-* 🧠 Internal Qt translation layer – fully translated file dialogs without system `.qm` dependency
-* ✨ Smooth discard animation (rotate -90° + fade transition)
-* ⚙️ Code cleanup and performance improvements
-* 🧹 Removed artificial delays and debug prints
-* 🗂️ Refactored file handling using `pathlib`
+📸 Program Preview
+Dark Theme	Light Theme	Creative Theme	Recreational Theme	System Theme
 
----
+	
+	
+	
+	
 
-## 🚀 Key Features
+Additional views:
 
-### 🖼️ High-Quality Image Upscaling
+🆕 What’s New in 1.3
+🧠 Multi-Model Upscaler Management
 
-Upscale images using the powerful **waifu2x-ncnn-vulkan** engine.
+AyoUP is no longer limited to a single engine.
+
+✔ Multiple Upscaler Support
+
+You can store multiple NCNN-based upscalers inside the models directory.
+Each model is isolated in its own folder.
+
+📦 ZIP Installation Support
+
+Install new models directly from .zip archives.
+
+The application automatically:
+
+creates a folder named after the archive
+
+extracts its contents
+
+makes the model instantly available
+
+🔄 Instant Engine Switching
+
+A new dropdown (QComboBox) in the main window allows fast switching between installed upscalers.
+
+🏷️ Dynamic Label Integration
+
+The “Upscaler Selection” label adapts visually to the active theme.
+
+🔁 Automatic Model List Refresh
+
+After closing the Settings window, the model list refreshes automatically if changes were made.
+
+🌍 Expanded Language Support
+
+Added full support for:
+
+🇫🇷 French
+
+🇮🇹 Italian
+
+🇬🇷 Greek
+
+All translation files were updated with new keys:
+
+select_upscaler
+
+filter_zip
+
+The interface remains fully consistent across all supported languages.
+
+🛠 Stability & Logic Improvements
+
+Fixed ModuleNotFoundError caused by missing translation files
+
+File dialog now defaults to ZIP archives when installing models
+
+Improved model refresh logic
+
+Internal cleanup and stability improvements
+
+🚀 Key Features
+🖼️ Flexible Upscaling Engine
+
+AyoUP supports compatible NCNN-based Vulkan upscalers, including:
+
+waifu2x-based builds
+
+Real-ESRGAN NCNN builds
+
+other compatible Vulkan NCNN engines
+
+The application is engine-agnostic and designed for future expansion.
 
 Perfect for:
 
-* AI-generated images
-* illustrations & digital art
-* wallpapers
-* photography
-* batch workflows
+AI-generated images
 
----
+digital illustrations
 
-### 📂 Advanced Batch Processing
+photography
 
-Process multiple files effortlessly:
+wallpapers
 
-* Select multiple images
-* Load entire folders
-* Recursive subfolder scanning
-* Drag & Drop support:
-  * single files
-  * multiple files
-  * directories
+batch workflows
 
----
+📂 Advanced Batch Processing
 
-### ⚡ Modern UX & Smart Interface
+Multi-file selection
 
-#### 🎴 Fan Preview System
+Folder loading
+
+Recursive subfolder scanning
+
+Drag & Drop support:
+
+single files
+
+multiple files
+
+directories
+
+⚡ Modern Smart Interface
+🎴 Fan Preview System
+
 Displays a dynamic fan of thumbnails when multiple files are queued.
 
-#### ▶️ Smart Run Button
-The **Run** button transforms into a live progress indicator during processing.
+▶️ Smart Run Button
 
-#### 🧠 Intelligent UI Behavior
-* File counter appears only when needed
-* UI clears automatically after completion
-* Controls are locked during processing to prevent conflicts
+The Run button transforms into a live progress indicator during processing.
 
-#### 🎞️ Discard Animation (New in 1.2)
-After processing, images smoothly rotate (-90°) and fade out, revealing the next item in queue.
+🧠 Intelligent UI Behavior
 
----
+File counter appears only when needed
 
-## 🎨 Themes
+UI clears automatically after completion
 
-AyoUP supports a consistent visual identity:
+Controls are locked during processing
 
-* Dark Theme (default)
-* Light Theme
-* Relax Theme
-* Creative Theme (new in 1.2)
+🎨 Themes
 
-All dialogs use non-native Qt rendering for full theme consistency and localization control.
+AyoUP provides a consistent visual identity:
 
----
+Dark Theme
 
-## 🌍 Supported Languages
+Light Theme
+
+Recreational Theme
+
+Creative Theme
+
+System Theme
+
+All dialogs use non-native Qt rendering for full styling and localization control.
+
+🌍 Supported Languages
 
 Fully translated interface including Qt file dialogs.
 
-* 🇵🇱 Polish
-* 🇺🇸 English
-* 🇪🇸 Spanish
-* 🇷🇴 Romanian
-* 🇵🇹 Portuguese
-* 🇺🇦 Ukrainian
-* 🇨🇿 Czech
-* 🇸🇮 Slovenian
-* 🇱🇻 Latvian
-* 🇱🇹 Lithuanian
-* 🇪🇪 Estonian
-* 🇬🇪 Georgian
+🇵🇱 Polish
 
-The application uses an internal Qt translation layer to ensure consistent localization across all systems.
+🇺🇸 English
 
----
+🇪🇸 Spanish
 
-## 🏗️ Architecture Highlights
+🇷🇴 Romanian
 
-* Modular GUI structure
-* ThemeManager-based styling system
-* InternalQtTranslator (no external `.qm` dependency)
-* Fully non-native Qt dialogs for styling and localization control
-* Modern file handling via `pathlib`
-* Clean event loop (no blocking delays)
+🇵🇹 Portuguese
 
----
+🇺🇦 Ukrainian
 
-## 🛠️ Technology
+🇨🇿 Czech
 
-Developed using a modern Python + Qt stack:
+🇸🇰 Slovak
 
-* **Language:** Python 3.10+
-* **GUI:** PySide6 (Qt for Python)
-* **Engine:** waifu2x-ncnn-vulkan
-* **Development Environment:** Linux (Fedora / openSUSE)
+🇱🇻 Latvian
 
----
+🇱🇹 Lithuanian
 
-## 🌌 Ayo Ecosystem
+🇪🇪 Estonian
 
-* **AyoARCH** – ZIP image viewer
-* **AyoCONVERT** – high-quality file conversion
-* **AyoSORT** – intelligent image categorization
+🇬🇪 Georgian
 
-More projects:  
+🇫🇷 French
+
+🇮🇹 Italian
+
+🇬🇷 Greek
+
+The application uses an internal Qt translation layer to ensure consistent localization across systems.
+
+🏗️ Architecture
+
+Modular GUI structure
+
+ThemeManager styling system
+
+Internal Qt translation layer
+
+Multi-model management system
+
+Automatic ZIP model installer
+
+Non-native Qt dialogs for full styling control
+
+Modern file handling via pathlib
+
+Clean event loop design
+
+🛠 Technology
+
+Python 3.10+
+
+PySide6 (Qt for Python)
+
+NCNN-based Vulkan upscalers
+
+Developed on Linux (Fedora / openSUSE)
+
+🌌 Ayo Ecosystem
+
+AyoARCH – ZIP image viewer
+
+AyoCONVERT – file conversion tool
+
+AyoSORT – intelligent image categorization
+
+More projects:
 👉 https://klucznik26.github.io/AyoWWW/
 
----
-
-## 📥 Installation
-
-### 1️⃣ Clone repository
-
-```bash
+📥 Installation
+1️⃣ Clone repository
 git clone https://github.com/Klucznik26/Ayo-UP.git
 cd Ayo-UP
-
 2️⃣ Install dependencies
 pip install PySide6
-3️⃣ Download waifu2x engine
+3️⃣ Install an Upscaler Model
 
-Download waifu2x-ncnn-vulkan from:
-https://github.com/nihui/waifu2x-ncnn-vulkan
+You can:
 
-Place the executable in the project directory or configure its path in settings.
+place a compatible NCNN-based upscaler inside the models directory
+or
+
+install it directly from a .zip file via the application settings
 
 4️⃣ Run application
 python main.py

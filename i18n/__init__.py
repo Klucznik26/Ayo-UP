@@ -16,6 +16,9 @@ from .si import STRINGS as SI
 from .ge import STRINGS as GE
 from .es import STRINGS as ES
 from .ro import STRINGS as RO
+from .fr import STRINGS as FR
+from .it import STRINGS as IT
+from .gr import STRINGS as GR
 
 _LANG_MAP = {
     "pl": PL,
@@ -30,6 +33,9 @@ _LANG_MAP = {
     "ge": GE,
     "es": ES,
     "ro": RO,
+    "fr": FR,
+    "it": IT,
+    "gr": GR,
 }
 
 _qt_translators = []
@@ -90,6 +96,7 @@ def setup_qt_translations(app):
         "pt": "pt_BR",
         "ro": "ro_RO",  # Wymuszamy pełny kod dla Rumunii
         "es": "es_ES",  # Dla pewności Hiszpański
+        "gr": "el",     # Grecki w Qt to 'el' (Elliniká)
         # pl, en, lv, lt są zgodne
     }
     

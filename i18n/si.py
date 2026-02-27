@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Izberi datoteke...",
     "open_folder": "Izberi mapo...",
     "select_output": "Izberi izhodno mapo",
+    "select_upscaler": "Izbira upscalerja",
     "run": "Zaženi",
     "exit": "Izhod",
     "settings": "Nastavitve",

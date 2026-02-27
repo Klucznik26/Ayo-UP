@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Izvēlēties failus...",
     "open_folder": "Izvēlēties mapi...",
     "select_output": "Izvēlēties saglabāšanas mapi",
+    "select_upscaler": "Izvēlēties upscaleru",
     "run": "Palaist",
     "exit": "Aizvērt",
     "settings": "Iestatījumi",

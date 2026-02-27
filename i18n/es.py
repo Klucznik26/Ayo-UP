@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Seleccionar archivos...",
     "open_folder": "Seleccionar carpeta...",
     "select_output": "Seleccionar carpeta de destino",
+    "select_upscaler": "Seleccionar upscaler",
     "run": "Ejecutar",
     "exit": "Salir",
     "settings": "Configuración",

@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QFrame,
     QMenu,
     QApplication,
+    QComboBox,
 )
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
@@ -20,7 +21,7 @@ from gui.scale import ScaleController
 from gui.settings_dialog import SettingsDialog
 from themes import ThemeManager
 
-from core.model_manager import ensure_model_dirs
+from core.model_manager import ensure_model_dirs, get_model_names, set_active_model
 from config.settings import load_settings
 from i18n import tr
 
@@ -74,6 +75,16 @@ class MainWindow(QMainWindow, MainWindowActions):
         self.btn_output = QPushButton()
         self.btn_output.clicked.connect(self._choose_output_dir)
         left_panel.addWidget(self.btn_output)
+
+        self.label_upscaler = QLabel()
+        self.label_upscaler.setContentsMargins(0, 5, 0, 0)
+        left_panel.addWidget(self.label_upscaler)
+
+        self.combo_upscaler = QComboBox()
+        self.combo_upscaler.addItems(get_model_names())
+        # Podłączenie zmiany wyboru do menedżera modeli
+        self.combo_upscaler.currentTextChanged.connect(set_active_model)
+        left_panel.addWidget(self.combo_upscaler)
 
         left_panel.addStretch()
 
@@ -191,6 +202,12 @@ class MainWindow(QMainWindow, MainWindowActions):
         # 🔥 PRZEŁADOWANIE MOTYWU RUNTIME
         ThemeManager.apply(QApplication.instance())
 
+        # Odświeżenie listy modeli (jeśli dodano nowy w ustawieniach)
+        current = self.combo_upscaler.currentText()
+        self.combo_upscaler.clear()
+        self.combo_upscaler.addItems(get_model_names())
+        self.combo_upscaler.setCurrentText(current)
+
         self.retranslate_ui()
         self._update_run_state()
 
@@ -198,11 +215,12 @@ class MainWindow(QMainWindow, MainWindowActions):
     # I18N
     # ==================================================
     def retranslate_ui(self):
-        self.setWindowTitle("AyoUP v 1.2")
+        self.setWindowTitle("AyoUP v 1.3")
         self.btn_open.setText(tr("open_image"))
         self.act_files.setText(tr("open_files"))
         self.act_folder.setText(tr("open_folder"))
         self.btn_output.setText(tr("select_output"))
+        self.label_upscaler.setText(tr("select_upscaler"))
         self.btn_run.setText(tr("run"))
         self.btn_close.setText(tr("exit"))
         self.btn_settings.setText(tr("settings"))

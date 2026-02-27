@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Pasirinkti failus...",
     "open_folder": "Pasirinkti aplanką...",
     "select_output": "Pasirinkti išsaugojimo aplanką",
+    "select_upscaler": "Pasirinkti upscalerį",
     "run": "Vykdyti",
     "exit": "Uždaryti",
     "settings": "Nustatymai",

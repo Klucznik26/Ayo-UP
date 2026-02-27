@@ -4,6 +4,7 @@ STRINGS = {
     "open_files": "Vybrat soubory...",
     "open_folder": "Vybrat složku...",
     "select_output": "Vybrat výstupní složku",
+    "select_upscaler": "Výběr upscaleru",
     "run": "Spustit",
     "exit": "Ukončit",
     "settings": "Nastavení",
