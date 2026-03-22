@@ -1,4 +1,4 @@
-# AyoUP 1.3 – Intelligent Multi-Model Image Upscaler 🚀🖼️
+# AyoUP 1.7.0 – Intelligent Multi-Model Image Upscaler 🚀🖼️
 
 AyoUP is a fast and lightweight desktop image upscaler supporting multiple **NCNN-based Vulkan engines**.
 
@@ -12,19 +12,33 @@ Part of the **Ayo Ecosystem**.
 
 ### Main Interface Themes
 
-| Dark Theme | Light Theme | Creative Theme | Recreational Theme | System Theme |
-|:--:|:--:|:--:|:--:|:--:|
-| ![Dark](screenshots/dark_theme.png) | ![Light](screenshots/light_theme.png) | ![Creative](screenshots/creative_theme.png) | ![Recreational](screenshots/recreational_theme.png) | ![System](screenshots/system_theme.png) |
+| Dark Theme | Light Theme | Creative Theme | Recreational Theme | Arctic Theme | System Theme |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| <img src="screenshots/dark_theme.png" width="180"> | <img src="screenshots/light_theme.png" width="180"> | <img src="screenshots/creative_theme.png" width="180"> | <img src="screenshots/recreational_theme.png" width="180"> | <img src="screenshots/arctic_theme.png" width="180"> | <img src="screenshots/system_theme.png" width="180"> |
 
 ### Functional Views
 
-| Upscaler Selection | Language Selection |
+| Select theme | Language Selection |
 |:--:|:--:|
-| ![Upscaler](screenshots/upscaler_selection.png) | ![Language](screenshots/language_selection.png) |
+| <img src="screenshots/select_theme.png" width="400"> | <img src="screenshots/language_selection.png" width="400"> |
 
 ---
 
-## 🆕 What’s New in 1.3
+## 🆕 What’s New in 1.7.0
+
+### 🎨 Redesigned "Ayo Dark" Theme & UI Enhancements
+- **Deep Emerald Aesthetics:** The Dark Theme has been completely rebuilt from the ground up, featuring deep black-green backgrounds, custom borders, and beautiful emerald neon accents.
+- **Interactive Sidebar:** Integrated custom graphical icons with real-time alpha-channel cropping. Icons gracefully expand by 10% and emit a glowing neon effect on hover.
+- **Dynamic Image Preview:** Clicking any file in the right-side queue list now instantly updates the central Drop Area preview.
+
+### 🌍 Massive Localization (i18n) Overhaul
+- **43 Languages Fully Supported:** Every single translation file has been thoroughly verified, updated, and 100% completed.
+- **Standardized ISO Codes:** Completely refactored language identification to strictly use international ISO 639-1 standard codes (e.g., `uk`, `cs`, `sl`, `ka`).
+- **Perfect CJK & Emoji Rendering:** Implemented robust global font fallbacks (`Noto Sans`, `Segoe UI`, `Ubuntu`) to guarantee flawless display of Japanese/Chinese characters and flag emojis across all Linux distributions.
+
+---
+
+## ⏪ Previous Updates (1.5)
 
 ### 🧠 Multi-Model Upscaler Management
 
@@ -54,13 +68,7 @@ After closing the Settings window, the model list refreshes automatically if cha
 
 ### 🌍 Expanded Language Support
 
-Added full support for:
-
-- 🇫🇷 French  
-- 🇮🇹 Italian  
-- 🇬🇷 Greek  
-
-All translation files were updated with new keys:
+Translation files were updated with new keys:
 
 - `select_upscaler`
 - `filter_zip`
@@ -137,23 +145,21 @@ All dialogs use non-native Qt rendering for full styling and localization contro
 
 ---
 
-## 🌍 Supported Languages
+## 🌍 Supported Languages (43)
 
-- 🇵🇱 Polish  
-- 🇺🇸 English  
-- 🇪🇸 Spanish  
-- 🇷🇴 Romanian  
-- 🇵🇹 Portuguese  
-- 🇺🇦 Ukrainian  
-- 🇨🇿 Czech  
-- 🇸🇰 Slovak  
-- 🇱🇻 Latvian  
-- 🇱🇹 Lithuanian  
-- 🇪🇪 Estonian  
-- 🇬🇪 Georgian  
-- 🇫🇷 French  
-- 🇮🇹 Italian  
-- 🇬🇷 Greek  
+| | | | |
+|---|---|---|---|
+| 🇦🇱 Albanian | 🇳🇱 Dutch | 🇮🇪 Irish | 🇵🇹 Portuguese |
+| 🇦🇲 Armenian | 🇬🇧 English | 🇮🇹 Italian | 🇷🇴 Romanian |
+| 🇦🇿 Azerbaijani | 🇪🇪 Estonian | 🇯🇵 Japanese | 🇷🇸 Serbian |
+| 🇪🇸 Basque | 🇫🇮 Finnish | 🇰🇿 Kazakh | 🇸🇰 Slovak |
+| 🇧🇦 Bosnian | 🇫🇷 French | 🇱🇻 Latvian | 🇸🇮 Slovenian |
+| 🇧🇬 Bulgarian | 🇪🇸 Galician | 🇱🇹 Lithuanian | 🇪🇸 Spanish |
+| 🇦🇩 Catalan | 🇬🇪 Georgian | 🇱🇺 Luxembourgish | 🇰🇪 Swahili |
+| 🇫🇷 Corsican | 🇩🇪 German | 🇲🇰 Macedonian | 🇸🇪 Swedish |
+| 🇭🇷 Croatian | 🇬🇷 Greek | 🇲🇹 Maltese | 🇹🇷 Turkish |
+| 🇨🇿 Czech | 🇭🇺 Hungarian | 🇳🇴 Norwegian | 🇺🇦 Ukrainian |
+| 🇩🇰 Danish | 🇮🇸 Icelandic | 🇵🇱 Polish | |
 
 The application uses an internal Qt translation layer to ensure consistent localization across systems.
 
@@ -183,9 +189,13 @@ The application uses an internal Qt translation layer to ensure consistent local
 
 ## 🌌 Ayo Ecosystem
 
-- **AyoARCH** – ZIP image viewer  
-- **AyoCONVERT** – file conversion tool  
-- **AyoSORT** – intelligent image categorization  
+- [**AyoARCH**](https://github.com/Klucznik26/AyoARCHI) – ZIP image viewer  
+- [**AyoCONVERT**](https://github.com/Klucznik26/AyoCONVERT) – file conversion tool  
+- [**AyoSORT**](https://github.com/Klucznik26/AyoSORT) – intelligent image categorization  
+- [**AyoMONITOR**](https://github.com/Klucznik26/AyoMONITOR) – system resource monitoring tool  
+- **AyoHUB** *(Coming Soon)* – a unified interface designed to connect all Ayo applications together  
+
+<br><img src="screenshots/early_version_of _AyoHUB.png" width="600">
 
 More projects:  
 👉 https://klucznik26.github.io/AyoWWW/
@@ -199,9 +209,14 @@ More projects:
 ```bash
 git clone https://github.com/Klucznik26/Ayo-UP.git
 cd Ayo-UP
+```
 
 2️⃣ Install dependencies
+
+```bash
 pip install PySide6
+```
+
 3️⃣ Install an Upscaler Model
 
 You can:
@@ -212,7 +227,12 @@ or
 install it directly from a .zip file via the application settings
 
 4️⃣ Run application
-python main.py
+
+```bash
+python AyoUp.py
+```
 
 ---
 
+👉 "Try AyoUP now"  
+👉 "Download models and start upscaling"
